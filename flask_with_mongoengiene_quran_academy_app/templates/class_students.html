@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>View Students in Class</title>
+</head>
+<body>
+    <h1>View Students in a Class</h1>
+
+    {% if message %}
+        <p>{{ message }}</p>  <!-- Display message if class not found -->
+    {% else %}
+        <ul>
+            {% for student in students %}
+                <li>{{ student }}</li>  <!-- Display the student names -->
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

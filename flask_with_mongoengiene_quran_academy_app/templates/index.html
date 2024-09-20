@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Quran Academy</title>
+</head>
+<body>
+    <h1>Welcome to Quran Academy</h1>
+    <ul>
+        <li><a href="/add_teacher">Add Teacher</a></li>
+        <li><a href="/add_student">Add Student</a></li>
+        <li><a href="/create_class">Create Class</a></li>
+        <li><a href="/enroll_student">Enroll Student</a></li>
+    </ul>
+    <form id="classViewForm">
+        <label for="classTitleInput">Enter Class Title:</label>
+        <input type="text" id="classTitleInput" name="class_title" placeholder="Enter class title" required>
+        <button type="submit">View Students in Class</button>
+    </form>
+
+    <script>
+        document.getElementById('classViewForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form submission
+            
+            const classTitle = document.getElementById('classTitleInput').value.trim();  // Get the class title and trim spaces
+            console.log(classTitle)
+            // Redirect to the class students view with the class title
+            if (classTitle) {
+                window.location.href = `/class_students/${classTitle}`;
+            } else {
+                alert("Please enter a class title.");
+            }
+        });
+    </script>
+</body>
+</html>

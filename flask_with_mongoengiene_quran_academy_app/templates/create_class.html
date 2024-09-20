@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Create Class</title>
+</head>
+<body>
+    <h1>Create a New Class</h1>
+    <form id="createClassForm">
+        <label for="title">Class Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        <label for="teacher_email">Teacher Email:</label>
+        <input type="email" id="teacher_email" name="teacher_email" required><br><br>
+        <button type="submit">Create Class</button>
+    </form>
+    <p id="message"></p>
+
+    <script>
+        document.getElementById('createClassForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const title = document.getElementById('title').value.trim();
+            const teacher_email = document.getElementById('teacher_email').value.trim();
+
+            fetch('/create_class', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: title, teacher_email: teacher_email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message').textContent = data.message;
+            });
+        });
+    </script>
+</body>
+</html>

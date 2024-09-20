@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Enroll Student</title>
+</head>
+<body>
+    <h1>Enroll a Student in a Class</h1>
+    <form id="enrollStudentForm">
+        <label for="student_email">Student Email:</label>
+        <input type="email" id="student_email" name="student_email" required><br><br>
+        <label for="class_title">Class Title:</label>
+        <input type="text" id="class_title" name="class_title" required><br><br>
+        <button type="submit">Enroll Student</button>
+    </form>
+    <p id="message"></p>
+
+    <script>
+        document.getElementById('enrollStudentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const student_email = document.getElementById('student_email').value.trim();
+            const class_title = document.getElementById('class_title').value.trim();
+
+            fetch('/enroll_student', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ student_email: student_email, class_title: class_title })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message').textContent = data.message;
+            });
+        });
+    </script>
+</body>
+</html>
