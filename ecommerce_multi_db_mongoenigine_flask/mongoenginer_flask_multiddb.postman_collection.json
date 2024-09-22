@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "a17e1af1-488a-48b1-a381-58650e109f3e",
+		"name": "mongoenginer_flask_multiddb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "get_product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert_product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\": \"product123\",\r\n    \"name\": \"Awesome Product\",\r\n    \"description\": \"This is a great product.\",\r\n    \"category\": \"Electronics\",\r\n    \"brand\": \"ACME\",\r\n    \"price\": 99.99,\r\n    \"discount\": 10,\r\n    \"image_urls\": [\"https://example.com/image1.jpg\", \"https://example.com/image2.jpg\"],\r\n    \"video_url\": \"https://example.com/video.mp4\",\r\n    \"stock\": 100,\r\n    \"average_rating\": 4.5,\r\n    \"reviews\": [\r\n        {\r\n            \"rating\": 5,\r\n            \"comment\": \"Great product!\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "insert_user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"user123\",\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"password_hash\": \"hashed_password\",\r\n    \"phone_number\": \"1234567890\",\r\n    \"shipping_address\": {\r\n        \"street\": \"123 Main St\",\r\n        \"city\": \"Anytown\",\r\n        \"state\": \"CA\",\r\n        \"zip\": \"12345\"\r\n    },\r\n    \"billing_address\": {\r\n        \"street\": \"456 Main St\",\r\n        \"city\": \"Anytown\",\r\n        \"state\": \"CA\",\r\n        \"zip\": \"12345\"\r\n    },\r\n    \"payment_methods\": [\r\n        {\r\n            \"type\": \"credit_card\",\r\n            \"number\": \"1234567890123456\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "insert_orders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"order1234\",\r\n    \"user\": \"user123\", \r\n    \"items\": [\r\n        {\r\n            \"product\": \"product123\", \r\n            \"quantity\": 2,\r\n            \"price\": 99.99\r\n        }\r\n    ],\r\n    \"total_amount\": 199.98,\r\n    \"payment_status\": \"Pending\",\r\n    \"payment_method\": {\r\n        \"type\": \"credit_card\",\r\n        \"number\": \"1234567890123456\"\r\n    },\r\n    \"shipping_address\": {\r\n        \"street\": \"123 Main St\",\r\n        \"city\": \"Anytown\",\r\n        \"state\": \"CA\",\r\n        \"zip\": \"12345\"\r\n    },\r\n    \"shipping_status\": \"Pending\",\r\n    \"shipping_method\": \"Standard\",\r\n    \"tracking_number\": \"1234567890\",\r\n    \"ordered_at\":\"2024-01-01T00:00:00+05:00\",\r\n    \"shipped_at\":\"2024-02-01T23:59:59+05:00\",\r\n    \"delivered_at\":\"2024-03-01T23:59:59+05:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/orders",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "inventory",
+			"item": [
+				{
+					"name": "insert_inventory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\": \"product123\", \r\n    \"stock_available\": 100,\r\n    \"stock_reserved\": 0,\r\n    \"stock_threshold\": 20,\r\n    \"restock_date\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/inventory",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_inventory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
